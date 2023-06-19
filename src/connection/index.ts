@@ -147,11 +147,11 @@ const coinbaseWalletConnection: Connection = {
 
 export function getConnections() {
   return [
-    uniwalletConnectConnection,
-    injectedConnection,
-    walletConnectConnection,
-    walletConnectV2Connection,
-    coinbaseWalletConnection,
+    // uniwalletConnectConnection,
+    // injectedConnection,
+    // walletConnectConnection,
+    // walletConnectV2Connection,
+    // coinbaseWalletConnection,
     gnosisSafeConnection,
     networkConnection,
   ]
