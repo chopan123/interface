@@ -222,6 +222,22 @@ const CHAIN_INFO: ChainInfoMap = {
     color: darkTheme.chain_56,
     backgroundColor: darkTheme.chain_56_background,
   },
+  [SupportedChainId.FUTURENET]: {
+    networkType: NetworkType.L1,
+    blockWaitMsBeforeWarning: ms`10m`,
+    bridge: 'https://cbridge.celer.network/1/56',
+    docs: 'https://soroban.stellar.org/docs/',
+    explorer: 'https://bscscan.com/',
+    infoLink: 'https://info.uniswap.org/#/bnb/',
+    label: 'FUTURENET Chain',
+    logoUrl: bnbLogo,
+    circleLogoUrl: bnbCircleLogoUrl,
+    squareLogoUrl: bnbSquareLogoUrl,
+    nativeCurrency: { name: 'XLM', symbol: 'XLM', decimals: 18 },
+    defaultListUrl: PLASMA_BNB_LIST,
+    color: darkTheme.chain_56,
+    backgroundColor: darkTheme.chain_56_background,
+  },
 }
 
 export function getChainInfo(chainId: SupportedL1ChainId): L1ChainInfo
