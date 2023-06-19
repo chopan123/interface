@@ -35,6 +35,9 @@ docker run --volume ${currentDir}/..:/workspace \
            --net-alias ${containerName} \
            ${imageName}:${versionTag}
 
+# Set the git config
+docker exec $containerName git config --global --add safe.directory /workspace
+
 # Connect to bash on Docker container
 docker exec --tty --interactive $containerName bash
 
