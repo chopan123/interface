@@ -12,12 +12,10 @@ import { ReactNode, useCallback } from 'react'
 import { NavLink, NavLinkProps, useLocation, useNavigate } from 'react-router-dom'
 import styled from 'styled-components/macro'
 
-import { useIsNavSearchInputVisible } from '../../nft/hooks/useIsNavSearchInputVisible'
 import { Bag } from './Bag'
 import Blur from './Blur'
 import { ChainSelector } from './ChainSelector'
 import { MenuDropdown } from './MenuDropdown'
-import { SearchBar } from './SearchBar'
 import * as styles from './style.css'
 
 const Nav = styled.nav`
@@ -74,7 +72,7 @@ const Navbar = ({ blur }: { blur: boolean }) => {
   const isNftPage = useIsNftPage()
   const sellPageState = useProfilePageState((state) => state.state)
   const navigate = useNavigate()
-  const isNavSearchInputVisible = useIsNavSearchInputVisible()
+  // const isNavSearchInputVisible = useIsNavSearchInputVisible()
 
   const [accountDrawerOpen, toggleAccountDrawer] = useAccountDrawer()
 
@@ -107,19 +105,9 @@ const Navbar = ({ blur }: { blur: boolean }) => {
               <PageTabs />
             </Row>
           </Box>
-          <Box
-            className={styles.searchContainer}
-            {...(isNavSearchInputVisible && {
-              display: 'flex',
-            })}
-          >
-            <SearchBar />
-          </Box>
+
           <Box className={styles.rightSideContainer}>
             <Row gap="12">
-              <Box position="relative" display={isNavSearchInputVisible ? 'none' : { sm: 'flex' }}>
-                <SearchBar />
-              </Box>
               {isNftPage && sellPageState !== ProfilePageStateType.LISTING && <Bag />}
               {!isNftPage && (
                 <Box display={{ sm: 'none', lg: 'flex' }}>
