@@ -1,3 +1,7 @@
+import { futurenet, sandbox, standalone } from '@soroban-react/chains'
+import { SorobanReactProvider } from '@soroban-react/core'
+import { freighter } from '@soroban-react/freighter'
+import { ChainMetadata, Connector as SorobanConnector } from '@soroban-react/types'
 import { sendAnalyticsEvent, user } from '@uniswap/analytics'
 import { CustomUserProperties, InterfaceEventName, WalletConnectionResult } from '@uniswap/analytics-events'
 import { getWalletMeta } from '@uniswap/conedison/provider/meta'
@@ -22,10 +26,15 @@ export default function Web3Provider({ children }: { children: ReactNode }) {
 
   const key = useMemo(() => connections.map((connection) => connection.getName()).join('-'), [connections])
 
+  const chains: ChainMetadata[] = [sandbox, standalone, futurenet]
+  const sorobanConnectors: SorobanConnector[] = [freighter()]
+
   return (
     <Web3ReactProvider connectors={connectors} key={key}>
-      <Updater />
-      {children}
+      <SorobanReactProvider chains={chains} connectors={sorobanConnectors}>
+        <Updater />
+        {children}
+      </SorobanReactProvider>
     </Web3ReactProvider>
   )
 }

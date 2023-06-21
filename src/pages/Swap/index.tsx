@@ -63,6 +63,7 @@ import { computeFiatValuePriceImpact } from '../../utils/computeFiatValuePriceIm
 import { maxAmountSpend } from '../../utils/maxAmountSpend'
 import { computeRealizedPriceImpact, warningSeverity } from '../../utils/prices'
 import { supportedChainId } from '../../utils/supportedChainId'
+import { useSorobanReact } from '@soroban-react/core'
 
 export const ArrowContainer = styled.div`
   display: inline-flex;
@@ -136,6 +137,10 @@ const TRADE_STRING = 'SwapRouter'
 export default function SwapPage({ className }: { className?: string }) {
   const { chainId: connectedChainId } = useWeb3React()
   const loadedUrlParams = useDefaultsFromURLSearch()
+
+  const sorobanContext = useSorobanReact()
+  console.log('sorobanContext', sorobanContext)
+  
   return (
     <Trace page={InterfacePageName.SWAP_PAGE} shouldLogImpression>
       <PageWrapper>
